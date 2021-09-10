@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "db-migrate": "^0.11.12"
+    "db-migrate": "^0.11.12",
+    "app-config": "1.0.0"
   }
 }

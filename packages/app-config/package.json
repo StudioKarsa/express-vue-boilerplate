@@ -1,0 +1,12 @@
+{
+  "name": "app-config",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Application configurations",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
+}

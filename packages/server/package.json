@@ -19,7 +19,8 @@
     "joi": "^17.4.2",
     "mysql2": "^2.3.0",
     "winston": "^3.3.3",
-    "xss-clean": "^0.1.1"
+    "xss-clean": "^0.1.1",
+    "app-config": "1.0.0"
   },
   "devDependencies": {
     "jest": "^27.1.0",

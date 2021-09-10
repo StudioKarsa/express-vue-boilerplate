@@ -1,11 +1,10 @@
 import mysql2 from 'mysql2/promise'
-import config from '../config'
-import logger from '../config/logger'
+import config from 'app-config'
+import logger from '../logger'
 
 logger.info('Connecting to database')
 logger.debug(`host: ${config.database.host}`)
 logger.debug(`user: ${config.database.user}`)
-logger.debug(`password: ${config.database.password}`)
 logger.debug(`database: ${config.database.database}`)
 
 export const database = mysql2.createPool({

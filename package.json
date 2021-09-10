@@ -9,10 +9,10 @@
     "packages/*"
   ],
   "scripts": {
-    "test": "yarn --cwd 'packages/server' test",
+    "test": "yarn workspace server test",
     "dev": "concurrently --kill-others \"yarn dev:server\" \"yarn dev:website\"",
-    "dev:server": "yarn --cwd 'packages/server' dev",
-    "dev:website": "yarn --cwd 'packages/website' dev"
+    "dev:server": "yarn workspace server dev",
+    "dev:website": "yarn workspace website dev"
   },
   "devDependencies": {
     "concurrently": "^6.2.1"

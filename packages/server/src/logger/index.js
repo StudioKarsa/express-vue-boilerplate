@@ -1,4 +1,4 @@
-import config from '.'
+import config from 'app-config'
 import winston from 'winston'
 
 export const logger = winston.createLogger({

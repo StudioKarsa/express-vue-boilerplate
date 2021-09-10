@@ -1,6 +1,6 @@
 import { createServer } from 'http'
-import config from './config'
-import logger from './config/logger'
+import config from 'app-config'
+import logger from './logger'
 
 export const startServer = (app) => {
   const server = createServer(app)

@@ -1,7 +1,7 @@
 import { createApp } from './app'
 import { startServer } from './server'
 import { database } from './database'
-import logger from './config/logger'
+import logger from './logger'
 
 if (process.env.NODE_ENV !== 'test') {
   const app = createApp({ database })
