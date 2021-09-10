@@ -10,6 +10,10 @@
   ],
   "scripts": {
     "test": "yarn workspace server test",
+    "start:website": "yarn workspace website build && yarn workspace website serve",
+    "start:server": "yarn workspace server start",
+    "restart:server": "yarn workspace server restart",
+    "stop:server": "yarn workspace server stop",
     "dev": "concurrently --kill-others \"yarn dev:server\" \"yarn dev:website\"",
     "dev:server": "yarn workspace server dev",
     "dev:website": "yarn workspace website dev"
