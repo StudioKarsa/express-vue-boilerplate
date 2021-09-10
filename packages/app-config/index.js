@@ -9,7 +9,7 @@ export default {
     version: pkg.version,
     port: process.env.NODE_ENV === 'test' ? 0 : process.env.PORT || 5000,
     env: process.env.NODE_ENV || 'development',
-    baseUrl: process.env.BASE_URL || 'http://localhost:5000',
+    baseUrl: process.env.BASE_URL || `http://localhost:${process.env.PORT || 5000}`,
   },
   logger: {
     level: process.env.NODE_ENV === 'production' ? 'error' : 'debug',
