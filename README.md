@@ -11,6 +11,10 @@
 
 **`server`**: Express server with MySQL database connection.
 
+**`website`**: Vue.js application with Vite.
+
+**`app-config`**: Application configurations.
+
 ## Getting Started
 
 Install the project
