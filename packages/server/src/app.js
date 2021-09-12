@@ -7,7 +7,7 @@ import helmet from 'helmet'
 import { createV1Module } from './modules/v1'
 import { HTTP_STATUS } from './utils/http'
 
-export const createApp = ({ database }) => {
+export const createApp = ({ database, logger }) => {
   const app = express()
 
   app.use(compression())
@@ -25,7 +25,7 @@ export const createApp = ({ database }) => {
     })
   })
 
-  app.use('/v1', createV1Module({ router, database }))
+  app.use('/v1', createV1Module({ router, database, logger }))
 
   app.get('*', (req, res) => {
     res.status(HTTP_STATUS.NOT_FOUND).json({

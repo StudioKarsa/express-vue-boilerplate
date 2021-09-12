@@ -4,7 +4,7 @@ import { database } from './database'
 import logger from './logger'
 
 if (process.env.NODE_ENV !== 'test') {
-  const app = createApp({ database })
+  const app = createApp({ database, logger })
   const server = startServer(app)
 
   // Gracefully shutdown the server on SIGINT or SIGTERM
@@ -37,7 +37,10 @@ if (process.env.NODE_ENV !== 'test') {
   process.on('unhandledRejection', async (reason, p) => {
     await database.end()
     server.close(() => {
-      logger.error('Unhandled Rejection at: Promise ', p, ' reason: ', reason)
+      logger.error('Unhandled Rejection at:')
+      logger.error(JSON.stringify(p))
+      logger.error('reason:')
+      logger.error(reason)
       process.exit(1)
     })
   })

@@ -3,8 +3,8 @@ export const POST_TABLE_COLUMNS = [
   'id',
   'title',
   'content',
-  'createdAt',
-  'updatedAt',
+  'created_at',
+  'updated_at',
 ]
 
 /**
@@ -43,18 +43,17 @@ export function createPostStore({ database }) {
   }
 
   async function create(post) {
-    const [result] = await database.execute(
-      `INSERT INTO ${POST_TABLE_NAME} SET ?`,
-      post
+    await database.execute(
+      `INSERT INTO ${POST_TABLE_NAME} (title, content, created_at, updated_at)
+      VALUES (?, ?, ?, ?)`,
+      [post.title, post.content, new Date(), new Date()]
     )
-
-    return result
   }
 
   async function update(id, post) {
     const [result] = await database.execute(
-      `UPDATE ${POST_TABLE_NAME} SET ? WHERE id = ?`,
-      [post, id]
+      `UPDATE ${POST_TABLE_NAME} SET title = ?, content = ?, updated_at = ? WHERE id = ?`,
+      [post.title, post.content, new Date(), id]
     )
 
     return result

@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/node,vuejs
-# Edit at https://www.toptal.com/developers/gitignore?templates=node,vuejs
+# Created by https://www.toptal.com/developers/gitignore/api/node,vue,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=node,vue,visualstudiocode
 
 ### Node ###
 # Logs
@@ -122,11 +122,30 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-### Vuejs ###
+### VisualStudioCode ###
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Local History for Visual Studio Code
+.history/
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
+
+### Vue ###
+# gitignore template for Vue.js projects
+#
 # Recommended template: Node.gitignore
 
-dist/
-npm-debug.log
-yarn-error.log
+# TODO: where does this rule come from?
+docs/_book
 
-# End of https://www.toptal.com/developers/gitignore/api/node,vuejs
+# TODO: where does this rule come from?
+test/
+
+# End of https://www.toptal.com/developers/gitignore/api/node,vue,visualstudiocode

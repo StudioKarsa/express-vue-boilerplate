@@ -1,6 +1,6 @@
 import { HTTP_STATUS } from '../../../utils/http'
 
-export function createPostController({ database, store }) {
+export function createPostController({ database, store, logger }) {
   /**
    * Get all posts
    *
@@ -23,7 +23,7 @@ export function createPostController({ database, store }) {
    */
   const getPost = async (req, res) => {
     const post = await store.find(req.params.id)
-    if (!post) {
+    if (!!post) {
       res.status(HTTP_STATUS.NOT_FOUND).json({ message: 'Post not found' })
       return
     }
@@ -37,8 +37,10 @@ export function createPostController({ database, store }) {
    * @param {import('express').Response} res
    */
   const createPost = async (req, res) => {
-    const post = await store.create(req.body)
-    res.status(HTTP_STATUS.CREATED).json(post)
+    await store.create(req.body)
+    res.status(HTTP_STATUS.CREATED).json({
+      message: 'Post created',
+    })
   }
 
   /**
