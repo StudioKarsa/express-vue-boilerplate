@@ -1,22 +1,22 @@
 import joi from 'joi'
-import { createRoutes } from '../../../utils/http'
+import { createRoutes, HTTP_METHODS } from '../../../utils/http'
 
 export function createPostRoutes({ controller, router }) {
   createRoutes({
     router,
     routes: [
       {
-        method: 'GET',
+        method: HTTP_METHODS.GET,
         path: '/posts',
         handlers: [controller.getPosts],
       },
       {
-        method: 'GET',
+        method: HTTP_METHODS.GET,
         path: '/posts/:id',
         handlers: [controller.getPost],
       },
       {
-        method: 'POST',
+        method: HTTP_METHODS.POST,
         path: '/posts',
         validationSchema: joi.object({
           title: joi.string().required(),
@@ -25,7 +25,7 @@ export function createPostRoutes({ controller, router }) {
         handlers: [controller.createPost],
       },
       {
-        method: 'PUT',
+        method: HTTP_METHODS.PUT,
         path: '/posts/:id',
         validationSchema: joi.object({
           title: joi.string().required(),
@@ -34,7 +34,7 @@ export function createPostRoutes({ controller, router }) {
         handlers: [controller.updatePost],
       },
       {
-        method: 'DELETE',
+        method: HTTP_METHODS.DELETE,
         path: '/posts/:id',
         handlers: [controller.deletePost],
       },
