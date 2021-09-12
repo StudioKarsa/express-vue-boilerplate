@@ -1,8 +1,8 @@
 import { createRoute } from '../../utils/http'
 import { createPostModule } from './post'
 
-export function createV1Module({ router, database }) {
-  createPostModule({ router, database })
+export function createV1Module({ router, database, logger }) {
+  createPostModule({ router, database, logger })
 
   createRoute({
     router,
