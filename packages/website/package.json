@@ -7,6 +7,9 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "autoprefixer": "^10.3.4",
+    "postcss": "^8.3.6",
+    "tailwindcss": "^2.2.15",
     "vue": "^3.2.6"
   },
   "devDependencies": {
