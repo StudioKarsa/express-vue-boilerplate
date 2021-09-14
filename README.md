@@ -27,7 +27,7 @@ yarn
 
 > Make sure MySQL is running and the database and tables are created.
 
-Create a new **`.env`** file in **`packages/server`** and fill it with the following keys in the **`.env.example`** file:
+Create a new **`.env`** or **`.env.production`** file in **`packages/app-config`** and fill it with the following keys in the **`.env.example`** file:
 
 ```text
 PORT=5000
