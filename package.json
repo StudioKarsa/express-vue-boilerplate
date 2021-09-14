@@ -12,9 +12,9 @@
     "test": "yarn workspace server test",
     "start": "yarn workspace website build && pm2 startOrRestart ecosystem.config.js --env production",
     "stop": "pm2 stop ecosystem.config.js --env production",
-    "dev:start": "pm2 startOrRestart ecosystem.config.js --env development --watch",
-    "dev:start:website": "pm2 startOrRestart ecosystem.config.js --env development --only website --watch",
-    "dev:start:server": "pm2 startOrRestart ecosystem.config.js --env development --only server --watch",
+    "dev": "pm2 startOrRestart ecosystem.config.js --env development --watch",
+    "dev:website": "pm2 startOrRestart ecosystem.config.js --env development --only website --watch",
+    "dev:server": "pm2 startOrRestart ecosystem.config.js --env development --only server --watch",
     "dev:stop": "pm2 stop ecosystem.config.js --env development --watch",
     "dev:restart": "pm2 restart ecosystem.config.js --env development --watch",
     "dev:logs": "pm2 logs ecosystem.config.js --env development --watch"
