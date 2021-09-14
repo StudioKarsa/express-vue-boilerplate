@@ -1,7 +1,17 @@
 import dotenv from 'dotenv'
+import { fileURLToPath } from 'url'
+import path, { dirname } from 'path'
 import pkg from '../../package.json'
 
-dotenv.config()
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+dotenv.config({
+  path: path.join(
+    __dirname,
+    process.env.NODE_ENV !== 'production' ? '.env' : '.env.production'
+  ),
+})
 
 export default {
   app: {
@@ -9,7 +19,8 @@ export default {
     version: pkg.version,
     port: process.env.NODE_ENV === 'test' ? 0 : process.env.PORT || 5000,
     env: process.env.NODE_ENV || 'development',
-    baseUrl: process.env.BASE_URL || `http://localhost:${process.env.PORT || 5000}`,
+    baseUrl:
+      process.env.BASE_URL || `http://localhost:${process.env.PORT || 5000}`,
   },
   logger: {
     level: process.env.NODE_ENV === 'production' ? 'error' : 'debug',

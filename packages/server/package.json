@@ -7,10 +7,6 @@
   "author": "Studio Karsa",
   "main": "src/index.js",
   "scripts": {
-    "start": "pm2 start src/index.js --name server --interpreter node -i max --node-args=\"--harmony --experimental-specifier-resolution=node --max_old_space_size=500\"",
-    "stop": "pm2 stop server",
-    "restart": "pm2 restart server",
-    "dev": "nodemon --signal SIGINT ./src/index.js",
     "test": "cross-env NODE_OPTIONS='--experimental-vm-modules' jest"
   },
   "dependencies": {
@@ -26,9 +22,7 @@
   },
   "devDependencies": {
     "jest": "^27.1.0",
-    "nodemon": "^2.0.12",
-    "supertest": "^6.1.6",
-    "undici": "^4.5.1"
+    "supertest": "^6.1.6"
   },
   "jest": {
     "testEnvironment": "jest-environment-node",
