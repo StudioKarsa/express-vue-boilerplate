@@ -55,3 +55,23 @@ yarn dev:server
 ```bash
 yarn dev:website
 ```
+
+### Stopping the app
+
+```bash
+yarn dev:stop
+```
+
+### Running for production
+
+```bash
+yarn start
+```
+
+This will build the frontend and use pm2 serve as the static server then start the backend express server.
+
+and to stop the app:
+
+```bash
+yarn stop
+```
