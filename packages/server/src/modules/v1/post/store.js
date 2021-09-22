@@ -1,77 +1,76 @@
-export const POST_TABLE_NAME = 'posts'
-export const POST_TABLE_COLUMNS = [
-  'id',
-  'title',
-  'content',
-  'created_at',
-  'updated_at',
-]
-
 /**
  * Post store
  *
- * @param {{ database: import('mysql2/promise').Pool }} database
+ * @param {{ database: import('@prisma/client').PrismaClient, logger: import('winston').Logger }} opts
  */
-export function createPostStore({ database }) {
+export function createPostStore({ database, logger }) {
+  /**
+   * @param {number} id
+   */
   async function find(id) {
-    const [result] = await database.execute(
-      `SELECT ${POST_TABLE_COLUMNS.join(
-        ','
-      )} FROM ${POST_TABLE_NAME} WHERE id = ?`,
-      [id]
-    )
-
-    return result
+    const post = await database.post.findFirst({ where: { id } }).catch((err) => {
+      throw err
+    })
+    return post
   }
 
-  async function all() {
-    const [result] = await database.query(
-      `SELECT ${POST_TABLE_COLUMNS.join(',')} FROM ${POST_TABLE_NAME}`
-    )
+  /**
+   * @param {import('@prisma/client').Prisma.PostFindManyArgs} query
+   */
+  async function all(query = {}) {
+    const posts = await database.post.findMany(query).catch((err) => {
+      throw err
+    })
 
-    return result
+    return posts
   }
 
-  async function where(query) {
-    const [result] = await database.query(
-      `SELECT ${POST_TABLE_COLUMNS.join(
-        ','
-      )} FROM ${POST_TABLE_NAME} WHERE ${query}`
-    )
-
-    return result
-  }
-
+  /**
+   * @param {import('@prisma/client').Prisma.PostCreateInput} post
+   */
   async function create(post) {
-    await database.execute(
-      `INSERT INTO ${POST_TABLE_NAME} (title, content, created_at, updated_at)
-      VALUES (?, ?, ?, ?)`,
-      [post.title, post.content, new Date(), new Date()]
-    )
+    return database.post.create({ data: post }).catch((err) => {
+      throw err
+    })
   }
 
+  /**
+   * @param {number} id
+   * @param {import('@prisma/client').Prisma.PostCreateInput} post
+   */
   async function update(id, post) {
-    const [result] = await database.execute(
-      `UPDATE ${POST_TABLE_NAME} SET title = ?, content = ?, updated_at = ? WHERE id = ?`,
-      [post.title, post.content, new Date(), id]
-    )
+    const exists = await database.post.findFirst({ where: { id } }).catch((err) => {
+      throw err
+    })
 
-    return result
+    if (!exists) {
+      return null
+    }
+
+    return database.post
+      .update({
+        where: {
+          id,
+        },
+        data: post,
+      })
+      .catch((err) => {
+        throw err
+      })
   }
 
+  /**
+   * @param {number} id
+   */
   async function remove(id) {
-    const [result] = await database.execute(
-      `DELETE FROM ${POST_TABLE_NAME} WHERE id = ?`,
-      [id]
-    )
-
-    return result
+    return database.post.delete({ where: { id } }).catch((err) => {
+      throw err
+    })
   }
 
   return {
     find,
     all,
-    where,
     create,
     update,
     remove,

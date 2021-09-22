@@ -4,16 +4,20 @@
 
 ```text
 ├─packages/
+|   ├─ app-config/
+|   ├─ common/
 |   ├─ server/
 |   ├─ website/
-|   ├─ app-config/
 ```
 
-**`server`**: Express server with MySQL database connection.
+**`app-config`**: Application configurations.
+
+**`common`**: Common utilities (http status codes, http methods, node environment, etc).
+
+**`server`**: Express server with prisma schema.
 
 **`website`**: Vue.js application with Vite.
 
-**`app-config`**: Application configurations.
 
 ## Getting Started
 
@@ -23,9 +27,9 @@ Install the project
 yarn
 ```
 
-### Running both the server and the website
+### Running the application
 
-> Make sure MySQL is running and the database and tables are created.
+> Make sure MySQL is running
 
 Create a new **`.env`** or **`.env.production`** file in **`packages/app-config`** and fill it with the following keys in the **`.env.example`** file:
 
@@ -33,15 +37,30 @@ Create a new **`.env`** or **`.env.production`** file in **`packages/app-config`
 PORT=5000
 
 MYSQL_HOST=localhost
+MYSQL_PORT=3306
 MYSQL_USER=root
 MYSQL_PASSWORD=secret
-MYSQL_DATABASE=yourdatabase
+MYSQL_DATABASE=test
+
+DATABASE_URL=mysql://root:secret@localhost:3306/test # for prisma migration
+```
+
+Run migrations:
+
+```bash
+yarn dev:migrate
+
+# For production
+yarn migrate
 ```
 
 Now to start the app:
 
 ```bash
 yarn dev
+
+# For production
+yarn start
 ```
 
 ### Running only the server
@@ -60,18 +79,7 @@ yarn dev:website
 
 ```bash
 yarn dev:stop
-```
 
-### Running for production
-
-```bash
-yarn start
-```
-
-This will build the frontend and use pm2 serve as the static server then start the backend express server.
-
-and to stop the app:
-
-```bash
+# For production
 yarn stop
 ```

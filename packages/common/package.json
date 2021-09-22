@@ -1,0 +1,9 @@
+{
+  "name": "common",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Common utilities",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true
+}

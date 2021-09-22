@@ -17,7 +17,11 @@
     "dev:server": "pm2 startOrRestart ecosystem.config.js --env development --only server --watch",
     "dev:stop": "pm2 stop ecosystem.config.js --env development --watch",
     "dev:restart": "pm2 restart ecosystem.config.js --env development --watch",
-    "dev:logs": "pm2 logs ecosystem.config.js --env development --watch"
+    "dev:logs": "pm2 logs ecosystem.config.js --env development --watch",
+    "migrate": "yarn workspace server migrate",
+    "migrate:reset": "yarn workspace server migrate:reset",
+    "dev:migrate": "yarn workspace server dev:migrate",
+    "dev:migrate:reset": "yarn workspace server dev:migrate:reset"
   },
   "devDependencies": {
     "concurrently": "^6.2.1"
