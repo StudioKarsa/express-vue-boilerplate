@@ -33,5 +33,12 @@ export default {
     user: process.env.MYSQL_USER || 'root',
     password: process.env.MYSQL_PASSWORD || '',
     database: process.env.MYSQL_DATABASE || 'test',
+    url:
+      process.env.DATABASE_URL ||
+      `mysql://${process.env.MYSQL_USER || 'root'}:${
+        process.env.MYSQL_PASSWORD || ''
+      }@${process.env.MYSQL_HOST || 'localhost'}:${
+        process.env.MYSQL_PORT || 3306
+      }/${process.env.MYSQL_DATABASE || 'test'}`,
   },
 }

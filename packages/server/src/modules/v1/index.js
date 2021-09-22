@@ -1,6 +1,9 @@
 import { createRoute, HTTP_METHODS } from '../../utils/http'
 import { createPostModule } from './post'
 
+/**
+ * @param {{ router: import('express').Router, database: import('@prisma/client').PrismaClient, logger: import('winston').Logger }} opts
+ */
 export function createV1Module({ router, database, logger }) {
   createPostModule({ router, database, logger })
 
