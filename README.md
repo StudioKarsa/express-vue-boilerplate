@@ -4,16 +4,20 @@
 
 ```text
 ├─packages/
+|   ├─ app-config/
+|   ├─ common/
 |   ├─ server/
 |   ├─ website/
-|   ├─ app-config/
 ```
+
+**`app-config`**: Application configurations.
+
+**`common`**: Common utilities (http status codes, http methods, node environment, etc).
 
 **`server`**: Express server with prisma schema.
 
 **`website`**: Vue.js application with Vite.
 
-**`app-config`**: Application configurations.
 
 ## Getting Started
 
