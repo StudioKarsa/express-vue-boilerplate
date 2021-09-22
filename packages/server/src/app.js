@@ -1,11 +1,11 @@
 import express from 'express'
+import { HTTP_STATUS } from 'common'
 import xss from 'xss-clean'
 import compression from 'compression'
 import cors from 'cors'
 import helmet from 'helmet'
 
 import { createV1Module } from './modules/v1'
-import { HTTP_STATUS } from './utils/http'
 
 export const createApp = ({ database, logger }) => {
   const app = express()

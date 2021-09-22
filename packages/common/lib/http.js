@@ -1,5 +1,3 @@
-import validator from '../middleware/validator'
-
 export const HTTP_METHODS = {
   GET: 'get',
   POST: 'post',
@@ -41,29 +39,3 @@ export const HTTP_STATUS_MESSAGES = {
 }
 
 export const HTTP_STATUS_MESSAGE = (code) => HTTP_STATUS_MESSAGES[code]
-
-/**
- * Adds a new route to the server.
- */
-export function createRoute({
-  router,
-  method = HTTP_METHODS.GET,
-  path,
-  validationSchema = null,
-  handlers = [],
-}) {
-  return router[method.toLowerCase()](
-    path,
-    validationSchema ? [validator(validationSchema), ...handlers] : handlers
-  )
-}
-
-/**
- * Adds multiple routes to the server using the `createRoute` function.
- */
-export function createRoutes({ router, routes = [] }) {
-  routes.forEach(({ method, path, validationSchema, handlers }) => {
-    createRoute({ router, method, path, validationSchema, handlers })
-  })
-  return router
-}

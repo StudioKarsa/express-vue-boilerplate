@@ -1,5 +1,6 @@
 import joi from 'joi'
-import { createRoutes, HTTP_METHODS } from '../../../utils/http'
+import { HTTP_METHODS } from 'common'
+import { createRoutes } from '../../../utils/router'
 
 export function createPostRoutes({ controller, router }) {
   createRoutes({

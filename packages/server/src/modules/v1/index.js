@@ -1,4 +1,5 @@
-import { createRoute, HTTP_METHODS } from '../../utils/http'
+import { HTTP_METHODS } from 'common'
+import { createRoute } from '../../utils/router'
 import { createPostModule } from './post'
 
 /**

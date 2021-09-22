@@ -1,4 +1,4 @@
-import { HTTP_STATUS } from '../../../utils/http'
+import { HTTP_STATUS } from 'common'
 
 export function createPostController({ store, logger }) {
   /**
