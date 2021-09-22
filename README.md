@@ -24,8 +24,6 @@ Install `pm2` globally and install `typescript` with `pm2`:
 
 ```bash
 npm install -g pm2
-
-pm2 install typescript
 ```
 
 Install the project

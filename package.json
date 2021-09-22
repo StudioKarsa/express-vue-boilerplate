@@ -23,7 +23,7 @@
     "migrate:reset": "yarn workspace server migrate:reset",
     "dev:migrate": "yarn workspace server dev:migrate",
     "dev:migrate:reset": "yarn workspace server dev:migrate:reset",
-    "postinstall": "$(yarn bin)/pm2 install typescript"
+    "postinstall": "pm2 install typescript"
   },
   "devDependencies": {
     "concurrently": "^6.2.1",
