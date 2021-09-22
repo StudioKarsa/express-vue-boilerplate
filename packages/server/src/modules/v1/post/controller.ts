@@ -1,13 +1,25 @@
 import { HTTP_STATUS } from 'common'
+import type { RequestHandler } from 'express'
 
-export function createPostController({ store, logger }) {
+import type { ModuleController, ModuleControllerContext } from '../../types'
+import type { PostStore } from './store'
+
+export interface PostController extends ModuleController {
+  getPosts: RequestHandler
+  getPost: RequestHandler
+  createPost: RequestHandler
+  updatePost: RequestHandler
+  deletePost: RequestHandler
+}
+
+export function createPostController({
+  store,
+  logger,
+}: ModuleControllerContext<PostStore>): PostController {
   /**
    * Get all posts
-   *
-   * @param {import('express').Request} req
-   * @param {import('express').Response} res
    */
-  const getPosts = async (req, res) => {
+  const getPosts: RequestHandler = async (req, res) => {
     try {
       const posts = await store.all()
 
@@ -29,7 +41,7 @@ export function createPostController({ store, logger }) {
    * @param {import('express').Request} req
    * @param {import('express').Response} res
    */
-  const getPost = async (req, res) => {
+  const getPost: RequestHandler = async (req, res) => {
     try {
       const post = await store.find(Number(req.params.id))
       if (!post) {
@@ -52,7 +64,7 @@ export function createPostController({ store, logger }) {
    * @param {import('express').Request} req
    * @param {import('express').Response} res
    */
-  const createPost = async (req, res) => {
+  const createPost: RequestHandler = async (req, res) => {
     try {
       const post = await store.create(req.body)
 
@@ -74,7 +86,7 @@ export function createPostController({ store, logger }) {
    * @param {import('express').Request} req
    * @param {import('express').Response} res
    */
-  const updatePost = async (req, res) => {
+  const updatePost: RequestHandler = async (req, res) => {
     try {
       const post = await store.update(Number(req.params.id), req.body)
       if (!post) {
@@ -100,7 +112,7 @@ export function createPostController({ store, logger }) {
    * @param {import('express').Request} req
    * @param {import('express').Response} res
    */
-  const deletePost = async (req, res) => {
+  const deletePost: RequestHandler = async (req, res) => {
     try {
       const post = await store.remove(Number(req.params.id))
       if (!post) {

@@ -1,9 +1,13 @@
 {
   "name": "common",
   "version": "1.0.0",
-  "type": "module",
+
   "description": "Common utilities",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "typescript": "^4.4.3"
+  }
 }

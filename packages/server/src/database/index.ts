@@ -1,4 +1,4 @@
-import prisma from '@prisma/client'
+import { PrismaClient } from '@prisma/client'
 import config from 'app-config'
 import logger from '../logger'
 
@@ -12,7 +12,7 @@ logger.debug(`url: ${config.database.url}`)
 logger.debug('------------------------')
 
 export function createPrismaClient() {
-  return new prisma.PrismaClient({
+  return new PrismaClient({
     log: [
       { level: 'warn', emit: 'event' },
       { level: 'error', emit: 'event' },

@@ -1,11 +1,12 @@
 {
   "name": "server",
-  "type": "module",
+
   "private": true,
   "version": "1.0.0",
   "description": "Backend REST API express server",
   "author": "Studio Karsa",
-  "main": "src/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "prisma:generate": "yarn prisma generate",
     "prisma:pull": "dotenv -e ../app-config/.env.production yarn prisma db pull",
@@ -19,6 +20,7 @@
   "dependencies": {
     "@prisma/client": "^3.1.1",
     "app-config": "1.0.0",
+    "common": "1.0.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "dotenv-cli": "^4.0.0",
@@ -26,14 +28,19 @@
     "helmet": "^4.6.0",
     "joi": "^17.4.2",
     "winston": "^3.3.3",
-    "xss-clean": "^0.1.1",
-    "common": "1.0.0"
+    "xss-clean": "^0.1.1"
   },
   "devDependencies": {
+    "@types/compression": "^1.7.2",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.9.6",
     "cross-env": "^7.0.3",
     "jest": "^27.1.0",
     "prisma": "^3.1.1",
-    "supertest": "^6.1.6"
+    "supertest": "^6.1.6",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.3"
   },
   "jest": {
     "testEnvironment": "jest-environment-node",

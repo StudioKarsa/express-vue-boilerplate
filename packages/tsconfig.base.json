@@ -1,0 +1,20 @@
+{
+  "references": [
+    { "path": "./app-config/tsconfig.json" },
+    { "path": "./server/tsconfig.json" },
+    { "path": "./common/tsconfig.json" }
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "lib": ["ESNext"],
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "moduleResolution": "node"
+  },
+  "files": []
+}
