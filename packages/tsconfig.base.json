@@ -1,8 +1,8 @@
 {
   "references": [
-    { "path": "./app-config/tsconfig.json" },
-    { "path": "./server/tsconfig.json" },
-    { "path": "./common/tsconfig.json" }
+    { "path": "./app-config/tsconfig.build.json" },
+    { "path": "./server/tsconfig.build.json" },
+    { "path": "./common/tsconfig.build.json" }
   ],
   "compilerOptions": {
     "strict": true,

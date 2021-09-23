@@ -1,0 +1,13 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "./src",
+    "module": "CommonJS"
+  },
+  "include": ["src"],
+  "references": [
+    { "path": "../app-config/tsconfig.build.json" },
+    { "path": "../common/tsconfig.build.json" }
+  ]
+}

@@ -1,3 +1,5 @@
+import type { Prisma } from '@prisma/client'
+
 import { createApp } from './app'
 import { startServer } from './server'
 import { createPrismaClient } from './database'
@@ -5,15 +7,15 @@ import logger from './logger'
 
 const database = createPrismaClient()
 
-database.$on('error', (e) => {
+database.$on('error', (e: Prisma.LogEvent) => {
   logger.error(e)
 })
 
-database.$on('warn', (e) => {
+database.$on('warn', (e: Prisma.LogEvent) => {
   logger.warn(e)
 })
 
-database.$on('info', (e) => {
+database.$on('info', (e: Prisma.LogEvent) => {
   logger.info(e)
 })
 
@@ -45,7 +47,6 @@ async function main() {
       await database.$disconnect()
       server.close(() => {
         logger.error(err)
-        process.exit(1)
       })
     })
 
@@ -56,7 +57,6 @@ async function main() {
         logger.error(JSON.stringify(p))
         logger.error('reason:')
         logger.error(reason)
-        process.exit(1)
       })
     })
   }
