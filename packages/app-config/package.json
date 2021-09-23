@@ -1,7 +1,6 @@
 {
   "name": "app-config",
   "version": "1.0.0",
-
   "description": "Application configurations",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

@@ -1,7 +1,6 @@
 {
   "name": "common",
   "version": "1.0.0",
-
   "description": "Common utilities",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
