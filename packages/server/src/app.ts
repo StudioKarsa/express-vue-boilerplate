@@ -1,13 +1,23 @@
 import express from 'express'
 import { HTTP_STATUS } from 'common'
+// @ts-ignore xss-clean does not have type definitions
 import xss from 'xss-clean'
 import compression from 'compression'
 import cors from 'cors'
 import helmet from 'helmet'
 
+import type { Application } from 'express'
+import type { PrismaClient } from '@prisma/client'
+import type { Logger } from 'winston'
+
 import { createV1Module } from './modules/v1'
 
-export const createApp = ({ database, logger }) => {
+export type AppOptions = {
+  database: PrismaClient
+  logger: Logger
+}
+
+export const createApp = ({ database, logger }: AppOptions): Application => {
   const app = express()
 
   app.use(compression())

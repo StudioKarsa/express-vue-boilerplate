@@ -1,16 +1,15 @@
-const env = process.argv[process.argv.indexOf('--env') + 1];
-const isProduction = env === 'production';
+const env = process.argv[process.argv.indexOf('--env') + 1]
+const isProduction = env === 'production'
 
 module.exports = {
   apps: [
     {
       name: 'server',
-      script: './packages/server/src/index.js',
+      script: isProduction ? './packages/server/dist/index.js' : './packages/server/src/index.ts',
       instances: 'max',
       exec_mode: 'cluster',
       watch: !isProduction,
       ignore_watch: ['node_modules'],
-      node_args: '--harmony --experimental-specifier-resolution=node',
       env: {
         NODE_ENV: 'development',
       },

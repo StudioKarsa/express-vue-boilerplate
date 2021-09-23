@@ -1,13 +1,17 @@
 {
   "name": "app-config",
   "version": "1.0.0",
-  "type": "module",
+
   "description": "Application configurations",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "dotenv": "^10.0.0",
-    "common": "1.0.0"
+    "common": "1.0.0",
+    "dotenv": "^10.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.3"
   }
 }

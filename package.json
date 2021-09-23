@@ -10,20 +10,23 @@
   ],
   "scripts": {
     "test": "yarn workspace server test",
-    "start": "yarn workspace website build && pm2 startOrRestart ecosystem.config.js --env production",
+    "build": "tsc --build packages/tsconfig.base.json",
+    "start": "yarn build && yarn workspace website build && pm2 startOrRestart ecosystem.config.js --env production",
     "stop": "pm2 stop ecosystem.config.js --env production",
-    "dev": "pm2 startOrRestart ecosystem.config.js --env development --watch",
-    "dev:website": "pm2 startOrRestart ecosystem.config.js --env development --only website --watch",
-    "dev:server": "pm2 startOrRestart ecosystem.config.js --env development --only server --watch",
+    "dev": "yarn build && pm2 startOrRestart ecosystem.config.js --env development --watch",
+    "dev:website": "yarn build && pm2 startOrRestart ecosystem.config.js --env development --only website --watch",
+    "dev:server": "yarn build && pm2 startOrRestart ecosystem.config.js --env development --only server --watch",
     "dev:stop": "pm2 stop ecosystem.config.js --env development --watch",
-    "dev:restart": "pm2 restart ecosystem.config.js --env development --watch",
+    "dev:restart": "yarn build && pm2 restart ecosystem.config.js --env development --watch",
     "dev:logs": "pm2 logs ecosystem.config.js --env development --watch",
     "migrate": "yarn workspace server migrate",
     "migrate:reset": "yarn workspace server migrate:reset",
     "dev:migrate": "yarn workspace server dev:migrate",
-    "dev:migrate:reset": "yarn workspace server dev:migrate:reset"
+    "dev:migrate:reset": "yarn workspace server dev:migrate:reset",
+    "postinstall": "pm2 install typescript"
   },
   "devDependencies": {
-    "concurrently": "^6.2.1"
+    "concurrently": "^6.2.1",
+    "typescript": "^4.4.3"
   }
 }

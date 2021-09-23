@@ -1,8 +1,9 @@
+import type { Application } from 'express'
 import { createServer } from 'http'
 import config from 'app-config'
 import logger from './logger'
 
-export const startServer = (app) => {
+export const startServer = (app: Application) => {
   const server = createServer(app)
 
   return server.listen(config.app.port, () => {
