@@ -19,7 +19,7 @@ module.exports = {
     },
     {
       name: 'website',
-      script: isProduction ? 'serve' : 'yarn workspace website dev',
+      script: isProduction ? 'serve' : './scripts/dev_website.js',
       env_production: {
         PM2_SERVE_PATH: './packages/website/dist',
         PM2_SERVE_PORT: '8080',
