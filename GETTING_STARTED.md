@@ -18,7 +18,7 @@ Then, install the dependencies:
 yarn
 ```
 
-Create a new **`.env`** or **`.env.production`** file in **`packages/app-config`** and fill it with the following keys in the **`.env.example`** file:
+Create a new **`.env`** and **`.env.production`** file in **`packages/app-config`** and fill it with the following keys in the **`.env.example`** file:
 
 ```text
 PORT=5000
