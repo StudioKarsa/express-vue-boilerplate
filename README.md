@@ -10,13 +10,13 @@
 |   ├─ website/
 ```
 
-**`app-config`**: Application configurations.
+* [**`app-config`**](packages/app-config): Application configurations.
 
-**`common`**: Common utilities (http status codes, http methods, node environment, etc).
+* [**`common`**](packages/common): Common utilities (http status codes, http methods, node environment, etc).
 
-**`server`**: Express server with prisma schema.
+* [**`server`**](packages/server): Express server with prisma schema.
 
-**`website`**: Vue.js application with Vite.
+* [**`website`**](packages/website): Vue.js application with Vite.
 
 ## Getting Started
 
