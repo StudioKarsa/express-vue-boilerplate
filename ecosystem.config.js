@@ -9,7 +9,7 @@ module.exports = {
       instances: 'max',
       exec_mode: 'cluster',
       watch: !isProduction,
-      ignore_watch: ['node_modules'],
+      ignore_watch: ['node_modules', '.git', 'dist', 'coverage'],
       env: {
         NODE_ENV: 'development',
       },
