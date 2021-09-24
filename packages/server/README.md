@@ -83,20 +83,14 @@ Example **`src/modules/v1/posts/store.ts`**:
 import type { Prisma, Post } from '@prisma/client'
 import type { ModuleStoreContext } from '../../types'
 
-export interface PostStore {
-  all: (query?: Prisma.PostFindManyArgs) => Promise<Post[]>
-}
+export type PostStore = ReturnType<typeof createPostStore>
 
-/**
- * Post store
- */
-export function createPostStore({ database, logger, }: ModuleStoreContext): PostStore {
+/** Post store */
+export function createPostStore({ database, logger, }: ModuleStoreContext) {
   async function all(query: Prisma.PostFindManyArgs = {}) {
-    const posts = await database.post.findMany(query).catch((err) => {
+    return database.post.findMany(query).catch((err) => {
       throw err
     })
-
-    return posts
   }
 
   return { all }
