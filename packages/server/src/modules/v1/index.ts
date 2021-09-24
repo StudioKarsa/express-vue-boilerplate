@@ -10,7 +10,7 @@ export function createV1Module({ router, database, logger }: ModuleContext) {
 
   createRoute({
     router,
-    path: '/v1',
+    path: '/',
     method: HTTP_METHODS.GET,
     handlers: (req, res) => {
       res.json({

@@ -40,7 +40,7 @@ export const createApp = ({ database, logger }: AppOptions): Application => {
     })
   })
 
-  app.use('/', createV1Module({ router, database, logger }))
+  app.use('/v1', createV1Module({ router, database, logger }))
 
   app.get('*', (req, res) => {
     res.status(HTTP_STATUS.NOT_FOUND).json({
