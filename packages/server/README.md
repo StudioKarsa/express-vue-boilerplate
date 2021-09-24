@@ -1,6 +1,6 @@
 # server
 
-This package contains the server-side code of the application.
+This package contains the server-side code of the application following the dependency injection pattern.
 
 Tools used:
 
