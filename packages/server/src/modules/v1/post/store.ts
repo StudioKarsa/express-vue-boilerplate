@@ -9,9 +9,7 @@ export interface PostStore {
   remove: (id: number) => Promise<Post | null>
 }
 
-/**
- * Post store
- */
+/** Post store */
 export function createPostStore({
   database,
   logger,

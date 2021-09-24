@@ -16,9 +16,8 @@ export function createPostController({
   store,
   logger,
 }: ModuleControllerContext<PostStore>): PostController {
-  /**
-   * Get all posts
-   */
+
+  /** Get all posts */
   const getPosts: RequestHandler = async (req, res) => {
     try {
       const posts = await store.all()
@@ -35,12 +34,7 @@ export function createPostController({
     }
   }
 
-  /**
-   * Get a single post
-   *
-   * @param {import('express').Request} req
-   * @param {import('express').Response} res
-   */
+  /** Get a single post */
   const getPost: RequestHandler = async (req, res) => {
     try {
       const post = await store.find(Number(req.params.id))
@@ -58,12 +52,7 @@ export function createPostController({
     }
   }
 
-  /**
-   * Create a new post
-   *
-   * @param {import('express').Request} req
-   * @param {import('express').Response} res
-   */
+  /** Create a new post */
   const createPost: RequestHandler = async (req, res) => {
     try {
       const post = await store.create(req.body)
@@ -80,12 +69,7 @@ export function createPostController({
     }
   }
 
-  /**
-   * Update a post
-   *
-   * @param {import('express').Request} req
-   * @param {import('express').Response} res
-   */
+  /** Update a post */
   const updatePost: RequestHandler = async (req, res) => {
     try {
       const post = await store.update(Number(req.params.id), req.body)
@@ -106,12 +90,7 @@ export function createPostController({
     }
   }
 
-  /**
-   * Delete a post
-   *
-   * @param {import('express').Request} req
-   * @param {import('express').Response} res
-   */
+  /** Delete a post */
   const deletePost: RequestHandler = async (req, res) => {
     try {
       const post = await store.remove(Number(req.params.id))
