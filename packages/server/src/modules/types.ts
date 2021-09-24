@@ -1,4 +1,4 @@
-import type { RequestHandler, Router } from 'express'
+import type { Router } from 'express'
 import type { PrismaClient } from '@prisma/client'
 import type { Logger } from 'winston'
 
@@ -17,13 +17,9 @@ export type ModuleControllerContext<Store> = Omit<
   store: Store
 }
 
-export type ModuleController = {
-  [key: string]: RequestHandler
-}
-
 export type ModuleRoutesContext<Controller> = Omit<
   ModuleContext,
   'logger' | 'database'
 > & {
-  controller: Controller & ModuleController
+  controller: Controller
 }

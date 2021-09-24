@@ -1,8 +1,6 @@
 import type { Prisma, Post } from '@prisma/client'
 import type { ModuleStoreContext } from '../../types'
 
-export type PostStore = ReturnType<typeof createPostStore>
-
 /** Post store */
 export function createPostStore({ database, logger }: ModuleStoreContext) {
   async function find(id: number) {
@@ -60,3 +58,5 @@ export function createPostStore({ database, logger }: ModuleStoreContext) {
     remove,
   }
 }
+
+export type PostStore = ReturnType<typeof createPostStore>

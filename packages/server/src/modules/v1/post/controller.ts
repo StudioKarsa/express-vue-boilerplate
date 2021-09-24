@@ -1,21 +1,13 @@
 import { HTTP_STATUS } from 'common'
 import type { RequestHandler } from 'express'
 
-import type { ModuleController, ModuleControllerContext } from '../../types'
+import type { ModuleControllerContext } from '../../types'
 import type { PostStore } from './store'
-
-export interface PostController extends ModuleController {
-  getPosts: RequestHandler
-  getPost: RequestHandler
-  createPost: RequestHandler
-  updatePost: RequestHandler
-  deletePost: RequestHandler
-}
 
 export function createPostController({
   store,
   logger,
-}: ModuleControllerContext<PostStore>): PostController {
+}: ModuleControllerContext<PostStore>) {
   /** Get all posts */
   const getPosts: RequestHandler = async (req, res, next) => {
     try {
@@ -103,3 +95,5 @@ export function createPostController({
     deletePost,
   }
 }
+
+export type PostController = ReturnType<typeof createPostController>
