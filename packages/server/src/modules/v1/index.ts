@@ -14,7 +14,7 @@ export function createV1Module({ router, database, logger }: ModuleContext) {
     method: HTTP_METHODS.GET,
     handlers: (req, res) => {
       res.json({
-        message: 'Welcome to the API',
+        message: 'Welcome to the v1 API',
       })
     },
   })

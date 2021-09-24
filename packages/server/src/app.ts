@@ -39,7 +39,7 @@ export const createApp = ({ database, logger }: AppOptions): Application => {
 
   app.get('*', (req, res) => {
     res.status(HTTP_STATUS.NOT_FOUND).json({
-      message: 'Not found',
+      message: HTTP_STATUS_MESSAGE(HTTP_STATUS.NOT_FOUND),
     })
   })
 
