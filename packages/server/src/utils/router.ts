@@ -9,7 +9,7 @@ export type RouteOptions = {
   method: HTTP_METHODS
   path: string
   validationSchema?: Schema | null
-  handlers: RequestHandler
+  handlers: RequestHandler[]
 }
 
 /**
@@ -23,8 +23,8 @@ export function createRoute({
   handlers,
 }: RouteOptions) {
   return validationSchema
-    ? router[method](path, validator(validationSchema), handlers)
-    : router[method](path, handlers)
+    ? router[method](path, validator(validationSchema), ...handlers)
+    : router[method](path, ...handlers)
 }
 
 /**
