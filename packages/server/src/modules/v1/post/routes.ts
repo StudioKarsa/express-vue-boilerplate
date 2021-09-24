@@ -16,12 +16,12 @@ export function createPostRoutes({
       {
         method: HTTP_METHODS.GET,
         path: '/posts',
-        handlers: [controller.getPosts],
+        handler: controller.getPosts,
       },
       {
         method: HTTP_METHODS.GET,
         path: '/posts/:id',
-        handlers: [controller.getPost],
+        handler: controller.getPost,
       },
       {
         method: HTTP_METHODS.POST,
@@ -30,7 +30,7 @@ export function createPostRoutes({
           title: joi.string().required(),
           content: joi.string().required(),
         }),
-        handlers: [controller.createPost],
+        handler: controller.createPost,
       },
       {
         method: HTTP_METHODS.PUT,
@@ -39,12 +39,12 @@ export function createPostRoutes({
           title: joi.string().required(),
           content: joi.string().required(),
         }),
-        handlers: [controller.updatePost],
+        handler: controller.updatePost,
       },
       {
         method: HTTP_METHODS.DELETE,
         path: '/posts/:id',
-        handlers: [controller.deletePost],
+        handler: controller.deletePost,
       },
     ],
   })

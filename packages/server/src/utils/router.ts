@@ -9,7 +9,8 @@ export type RouteOptions = {
   method: HTTP_METHODS
   path: string
   validationSchema?: Schema | null
-  handlers: RequestHandler[]
+  middleware?: RequestHandler[]
+  handler: RequestHandler
 }
 
 /**
@@ -20,11 +21,14 @@ export function createRoute({
   method = HTTP_METHODS.GET,
   path,
   validationSchema = null,
-  handlers,
+  middleware = [],
+  handler,
 }: RouteOptions) {
+  const route = router.route(path)
+
   return validationSchema
-    ? router[method](path, validator(validationSchema), ...handlers)
-    : router[method](path, ...handlers)
+    ? route[method](...middleware, validator(validationSchema), handler)
+    : route[method](...middleware, handler)
 }
 
 /**
@@ -37,8 +41,8 @@ export function createRoutes({
   router: Router
   routes: Omit<RouteOptions, 'router'>[]
 }) {
-  routes.forEach(({ method, path, validationSchema, handlers }) => {
-    createRoute({ router, method, path, validationSchema, handlers })
+  routes.forEach(({ method, path, validationSchema, middleware, handler }) => {
+    createRoute({ router, method, path, validationSchema, middleware, handler })
   })
   return router
 }
