@@ -3,7 +3,7 @@ import { __isProd__, __isTest__ } from 'common'
 import path from 'path'
 
 dotenv.config({
-  path: path.join(__dirname, !__isProd__ ? '../.env' : '../.env.production'),
+  path: path.join(__dirname, __isProd__ ? '../.env.production' : '../.env'),
 })
 
 export type AppConfig = {
