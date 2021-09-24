@@ -1,5 +1,4 @@
 const { spawn } = require('child_process')
-const { platform } = require('os')
 
 /** Gets the absolute path to the binary file */
 function getFullCommandPath(cmd) {
