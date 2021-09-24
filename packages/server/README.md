@@ -137,10 +137,7 @@ export function createPostController({
         total: posts.length,
       })
     } catch (error) {
-      res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json({
-        error,
-        message: 'Internal server error',
-      })
+      next(error)
     }
   }
 

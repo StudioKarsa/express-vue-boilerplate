@@ -1,12 +1,12 @@
 import express from 'express'
-import { HTTP_STATUS } from 'common'
+import { HTTP_STATUS, HTTP_STATUS_MESSAGE } from 'common'
 // @ts-ignore xss-clean does not have type definitions
 import xss from 'xss-clean'
 import compression from 'compression'
 import cors from 'cors'
 import helmet from 'helmet'
 
-import type { Application } from 'express'
+import type { Application, Request, Response, NextFunction } from 'express'
 import type { PrismaClient } from '@prisma/client'
 import type { Logger } from 'winston'
 
@@ -40,6 +40,14 @@ export const createApp = ({ database, logger }: AppOptions): Application => {
   app.get('*', (req, res) => {
     res.status(HTTP_STATUS.NOT_FOUND).json({
       message: 'Not found',
+    })
+  })
+
+  // Catches errors
+  app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+    logger.error(err)
+    res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json({
+      message: HTTP_STATUS_MESSAGE(HTTP_STATUS.INTERNAL_SERVER_ERROR),
     })
   })
 

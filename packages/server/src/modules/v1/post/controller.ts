@@ -16,9 +16,8 @@ export function createPostController({
   store,
   logger,
 }: ModuleControllerContext<PostStore>): PostController {
-
   /** Get all posts */
-  const getPosts: RequestHandler = async (req, res) => {
+  const getPosts: RequestHandler = async (req, res, next) => {
     try {
       const posts = await store.all()
 
@@ -27,15 +26,12 @@ export function createPostController({
         total: posts.length,
       })
     } catch (error) {
-      res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json({
-        error,
-        message: 'Internal server error',
-      })
+      next(error)
     }
   }
 
   /** Get a single post */
-  const getPost: RequestHandler = async (req, res) => {
+  const getPost: RequestHandler = async (req, res, next) => {
     try {
       const post = await store.find(Number(req.params.id))
       if (!post) {
@@ -45,15 +41,12 @@ export function createPostController({
 
       res.status(HTTP_STATUS.OK).json(post)
     } catch (error) {
-      res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json({
-        error,
-        message: 'Internal server error',
-      })
+      next(error)
     }
   }
 
   /** Create a new post */
-  const createPost: RequestHandler = async (req, res) => {
+  const createPost: RequestHandler = async (req, res, next) => {
     try {
       const post = await store.create(req.body)
 
@@ -62,15 +55,12 @@ export function createPostController({
         post,
       })
     } catch (error) {
-      res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json({
-        error,
-        message: 'Internal server error',
-      })
+      next(error)
     }
   }
 
   /** Update a post */
-  const updatePost: RequestHandler = async (req, res) => {
+  const updatePost: RequestHandler = async (req, res, next) => {
     try {
       const post = await store.update(Number(req.params.id), req.body)
       if (!post) {
@@ -83,15 +73,12 @@ export function createPostController({
         post,
       })
     } catch (error) {
-      res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json({
-        error,
-        message: 'Internal server error',
-      })
+      next(error)
     }
   }
 
   /** Delete a post */
-  const deletePost: RequestHandler = async (req, res) => {
+  const deletePost: RequestHandler = async (req, res, next) => {
     try {
       const post = await store.remove(Number(req.params.id))
       if (!post) {
@@ -104,10 +91,7 @@ export function createPostController({
         post,
       })
     } catch (error) {
-      res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json({
-        error,
-        message: 'Internal server error',
-      })
+      next(error)
     }
   }
 
