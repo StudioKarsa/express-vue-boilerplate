@@ -21,7 +21,12 @@ export const createApp = ({ database, logger }: AppOptions): Application => {
   const app = express()
 
   app.use(compression())
-  app.use(cors())
+  app.use(
+    cors({
+      origin: '*',
+      methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    })
+  )
   app.use(xss())
   app.use(helmet())
   app.use(express.json())
@@ -35,7 +40,7 @@ export const createApp = ({ database, logger }: AppOptions): Application => {
     })
   })
 
-  app.use('/v1', createV1Module({ router, database, logger }))
+  app.use('/', createV1Module({ router, database, logger }))
 
   app.get('*', (req, res) => {
     res.status(HTTP_STATUS.NOT_FOUND).json({
