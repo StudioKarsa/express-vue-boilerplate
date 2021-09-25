@@ -14,7 +14,7 @@
     "migrate:reset": "dotenv -e ../app-config/.env.production yarn prisma migrate reset",
     "dev:migrate": "dotenv -e ../app-config/.env yarn prisma migrate dev",
     "dev:migrate:reset": "dotenv -e ../app-config/.env yarn prisma migrate reset",
-    "test": "jest --coverage -i"
+    "test": "jest -i"
   },
   "dependencies": {
     "@prisma/client": "^3.1.1",
