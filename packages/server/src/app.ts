@@ -52,6 +52,7 @@ export const createApp = ({ database, logger }: AppOptions): Application => {
   app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     logger.error(err)
     res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json({
+      error: err.message,
       message: HTTP_STATUS_MESSAGE(HTTP_STATUS.INTERNAL_SERVER_ERROR),
     })
   })

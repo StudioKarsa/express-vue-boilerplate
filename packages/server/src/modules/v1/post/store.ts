@@ -23,7 +23,7 @@ export function createPostStore({ database, logger }: ModuleStoreContext) {
 
   async function update(id: number, post: Post) {
     const exists = await database.post
-      .findFirst({ where: { id } })
+      .findUnique({ where: { id } })
       .catch((err) => {
         throw err
       })
