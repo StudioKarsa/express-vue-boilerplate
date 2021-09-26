@@ -1,6 +1,7 @@
 const { spawn } = require('child_process')
 
-/** Gets the absolute path to the binary file */
+/** Gets the absolute path to the binary file
+ * (used for mitigating issues with Windows and the PATH environment variable). */
 function getFullCommandPath(cmd) {
   let cmds = []
 
