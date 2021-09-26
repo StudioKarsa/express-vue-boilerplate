@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { HTTP_STATUS } from 'common'
+// import { HTTP_STATUS } from 'common'
 
 export default {
   name: 'AddTaskForm',
@@ -55,9 +55,9 @@ export default {
 				body: JSON.stringify(newTask),
 			})
 
-      if (res.json().status == HTTP_STATUS.CREATED) {
-        console.log(added)
-      }
+      // if (res.json().status == HTTP_STATUS.CREATED) {
+      //   console.log(added)
+      // }
 			
       this.$emit('task-add')
     },
