@@ -1,21 +1,29 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+  <div class="flex flex-col w-8/12 mx-auto p-8 border shadow-lg">
+    <Header />
+    <div class="flex flex-row shadow-sm">
+      <AddTaskForm @task-add="taskAdd"/>
+      <TasksList ref="TasksList" />
+    </div>
+  </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<script>
+import Header from './components/Header.vue'
+import AddTaskForm from './components/AddTaskForm.vue'
+import TasksList from './components/TasksList.vue'
+
+export default {
+  name: 'App',
+  components: {
+    Header,
+    AddTaskForm,
+    TasksList
+  },
+  methods: {
+    async taskAdd() {
+      this.$refs.TasksList.setTasks()
+    }
+  }
 }
-</style>
+</script>
