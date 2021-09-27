@@ -8,7 +8,6 @@ export default defineConfig({
   plugins: [vue()],
   server: {
     proxy: {
-      '/health': `${app.baseUrl}`,
       '/api': {
         target: `${app.baseUrl}/v1/`,
         changeOrigin: true,
@@ -16,5 +15,8 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
     },
+  },
+  optimizeDeps: {
+    include: ['common', 'app-config'],
   },
 })
