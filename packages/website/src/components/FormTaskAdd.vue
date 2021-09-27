@@ -25,7 +25,7 @@
         <p class="text-sm text-gray-500">{{ newTask.content.length }}/191</p>
       </div>
       <div class="flex flex-col p-2 space-y-1">
-        <button type="submit" class="p-2 bg-green-500 font-semibold text-white">
+        <button type="submit" class="p-2 bg-green-500 hover:bg-green-600 focus:bg-green-700 font-semibold text-white">
           Add Task
         </button>
       </div>

@@ -6,7 +6,7 @@
       </h2>
       <button
         @click="taskDelete(task.id)"
-        class="px-2 py-1 bg-red-500 font-bold text-white rounded-sm"
+        class="px-2 py-1 bg-red-500 hover:bg-red-600 active:bg-red-700 font-bold text-white rounded-sm"
       >
         X
       </button>
