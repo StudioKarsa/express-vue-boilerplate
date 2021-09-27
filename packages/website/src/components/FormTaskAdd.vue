@@ -78,7 +78,7 @@ export default {
         this.$emit('task-add')
       } else {
         this.message = {
-          text: data.error,
+          text: data.error || data.message,
           class: ['bg-red-300', 'text-red-700']
         }
       }
