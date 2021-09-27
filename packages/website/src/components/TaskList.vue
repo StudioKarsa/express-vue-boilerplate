@@ -1,11 +1,11 @@
 <template>
-  <div v-if="tasks.length > 0" class="w-8/12 p-2 space-y-2">
+  <div v-if="tasks.length > 0" class="w-8/12 px-2 space-y-2">
 		<div :key="task.id" v-for="task in tasks" class="flex flex-col space-y-2">
 			<TaskListItem :task="task" @task-delete="setTasks"/>
 		</div>
 	</div>
     
-  <div v-else class="w-full flex flex-row p-4 text-lg items-center justify-center">
+  <div v-else class="w-full flex flex-row p-4 text-lg items-center justify-center shadow">
     Start Addding Task!
   </div>
 </template>
