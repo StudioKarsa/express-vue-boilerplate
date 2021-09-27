@@ -1,7 +1,7 @@
 <template>
   <div v-if="tasks.length > 0" class="w-8/12 p-2 space-y-2">
 		<div :key="task.id" v-for="task in tasks" class="flex flex-col space-y-2">
-			<Task :task="task" @task-delete="setTasks"/>
+			<TaskListItem :task="task" @task-delete="setTasks"/>
 		</div>
 	</div>
     
@@ -11,13 +11,21 @@
 </template>
 
 <script>
-import Task from './Task.vue'
+import TaskListItem from './TaskListItem.vue'
 
 export default {
-  name: 'TasksList',
+  name: 'TaskList',
 	components: {
-		Task
+		TaskListItem
 	},
+  data() {
+    return {
+      tasks: [],
+    }
+  },
+  created() {
+    this.setTasks()
+  },
   methods: {
     async getAllTasks() {
       const res = await fetch('api/posts/')
@@ -27,16 +35,7 @@ export default {
     },
     async setTasks() {
       this.tasks = await this.getAllTasks()
-      console.log(this.tasks)
     },
-  },
-  data() {
-    return {
-      tasks: [],
-    }
-  },
-  created() {
-    this.setTasks()
   },
 }
 </script>
