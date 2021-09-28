@@ -219,7 +219,7 @@ And that's it!
 Here, you can use the types defined in `modules/types.ts` to help you create your own type-safe modules.
 
 ```typescript
-import type { RequestHandler, Router } from 'express'
+import type { Router } from 'express'
 import type { PrismaClient } from '@prisma/client'
 import type { Logger } from 'winston'
 
@@ -238,14 +238,10 @@ export type ModuleControllerContext<Store> = Omit<
   store: Store
 }
 
-export type ModuleController = {
-  [key: string]: RequestHandler
-}
-
 export type ModuleRoutesContext<Controller> = Omit<
   ModuleContext,
   'logger' | 'database'
 > & {
-  controller: Controller & ModuleController
+  controller: Controller
 }
 ```
